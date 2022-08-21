@@ -16,5 +16,9 @@ MonoBehaviour:
   playmakerVersion: 
   showWelcomeScreen: 1
   showUpgradeGuide: 0
+<<<<<<< HEAD
   lastAutoUpdateSignature: 2021.3.7f1__C:/Users/kidpe/Documents/Unity Projects/Brackeys2022/Assets__0.0.0.0
+=======
+  lastAutoUpdateSignature: 2021.3.7f1__E:/Unity/Brackeys2022/Assets__0.0.0.0
+>>>>>>> e2766e02249a028e781f9c68e2b5d4274d11888b
   useLegacyNetworking: 0
