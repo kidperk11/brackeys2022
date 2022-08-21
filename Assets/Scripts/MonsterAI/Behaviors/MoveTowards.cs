@@ -4,6 +4,7 @@ using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 
+//You can set a class to inherit action and conditional, and it will automatically show up in the behaviortree editor
 public class MoveTowards : Action
 {
    // The speed of the object
@@ -17,6 +18,7 @@ public class MoveTowards : Action
       if (Vector3.SqrMagnitude(transform.position - target.Value.position) < 0.1f) {
          return TaskStatus.Success;
       }
+      
       // We haven't reached the target yet so keep moving towards it
       transform.position = Vector3.MoveTowards(transform.position, target.Value.position, speed * Time.deltaTime);
       return TaskStatus.Running;
