@@ -13,6 +13,10 @@ namespace KinematicCharacterController.Walkthrough.SwimmingState
         public Transform CameraFollowPoint;
         public MyCharacterController Character;
 
+        //Monster Detection System
+        public MonsterSoundDetector monsterSoundDetector;
+        public GameObject character;
+
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
         private const string MouseScrollInput = "Mouse ScrollWheel";
@@ -33,6 +37,10 @@ namespace KinematicCharacterController.Walkthrough.SwimmingState
 
         private void Update()
         {
+            if(monsterSoundDetector == null){
+                monsterSoundDetector = FindObjectOfType<MonsterSoundDetector>();
+            }
+
             if (Input.GetMouseButtonDown(0))
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -91,6 +99,19 @@ namespace KinematicCharacterController.Walkthrough.SwimmingState
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
+
+            //Monster Detection System
+            if(characterInputs.MoveAxisForward != 0){
+                if(!characterInputs.CrouchHeld){
+                    monsterSoundDetector.CheckSoundPriority(this.gameObject.tag, character.transform.position);
+                }
+                
+            }
+            if(characterInputs.MoveAxisRight != 0){
+                if(!characterInputs.CrouchHeld){
+                    monsterSoundDetector.CheckSoundPriority(this.gameObject.tag, character.transform.position);
+                }
+            }
         }
     }
 }
