@@ -31,8 +31,11 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+<<<<<<< HEAD
     - NWH.Common
     - NWH.DWP2
+=======
+>>>>>>> 41a524267d9cc9f44a31f84a915ef6833d96c852
     - PPv2URPConverters
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
