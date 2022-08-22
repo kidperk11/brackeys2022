@@ -18,6 +18,7 @@ namespace KinematicCharacterController
         //Monster Detection System
         public MonsterSoundDetector monsterSoundDetector;
         public GameObject character;
+        public GameObject heldObject;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -98,6 +99,8 @@ namespace KinematicCharacterController
             characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
             characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
             characterInputs.CrouchHeld = Input.GetKey(KeyCode.C);
+            characterInputs.InteractDown = Input.GetKeyDown(KeyCode.Mouse0);
+            characterInputs.InteractUp = Input.GetKeyUp(KeyCode.Mouse0);
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);

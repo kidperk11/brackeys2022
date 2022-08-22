@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4741477021134202390}
   - component: {fileID: 1919476873785346085}
   - component: {fileID: 2992757137360759539}
+  - component: {fileID: 7399948889000741863}
   m_Layer: 0
-  m_Name: Rock
+  m_Name: Throwable Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,3 +115,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7399948889000741863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831614846481934873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1897eb46c04bb59478ce8a978946373e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenThrown: 0
+  hasMonsterSpeedModifier: 0
+  rb: {fileID: 2992757137360759539}
+  coll: {fileID: 1919476873785346085}
+  player: {fileID: 0}
+  pickupPoint: {fileID: 0}
+  fpsCam: {fileID: 0}
+  pickUpRange: 2
+  dropForwardForce: 5
+  dropUpwardForce: 5
+  equipped: 0
+  monsterSoundDetector: {fileID: 0}

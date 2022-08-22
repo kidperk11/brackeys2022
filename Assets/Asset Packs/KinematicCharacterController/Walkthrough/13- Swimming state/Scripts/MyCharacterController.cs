@@ -21,6 +21,8 @@ namespace KinematicCharacterController
         public bool CrouchDown;
         public bool CrouchUp;
         public bool CrouchHeld;
+        public bool InteractDown;
+        public bool InteractUp;
     }
 
     public class MyCharacterController : MonoBehaviour, ICharacterController

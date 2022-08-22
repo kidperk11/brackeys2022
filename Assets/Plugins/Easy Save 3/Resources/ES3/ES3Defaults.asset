@@ -30,9 +30,9 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - Assembly-CSharp
+    - NWH.DWP2
     - Assembly-CSharp-firstpass
     - NWH.Common
-    - NWH.DWP2
     - PPv2URPConverters
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
