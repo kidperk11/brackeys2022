@@ -5,13 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Target
-<<<<<<< HEAD
   - ShipCamera
   - Ship
   - Water
-=======
   - Ground
->>>>>>> 41a524267d9cc9f44a31f84a915ef6833d96c852
   layers:
   - Default
   - TransparentFX
