@@ -5,11 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Target
+  - ShipCamera
+  - Ship
+  - Water
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

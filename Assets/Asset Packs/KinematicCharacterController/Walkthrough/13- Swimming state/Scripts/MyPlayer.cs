@@ -4,8 +4,10 @@ using UnityEngine;
 using KinematicCharacterController;
 using KinematicCharacterController.Examples;
 using System.Linq;
+using NWH;
+using NWH.DWP2.ShipController;
 
-namespace KinematicCharacterController.Walkthrough.SwimmingState
+namespace KinematicCharacterController
 {
     public class MyPlayer : MonoBehaviour
     {
