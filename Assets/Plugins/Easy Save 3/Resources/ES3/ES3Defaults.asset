@@ -33,7 +33,9 @@ MonoBehaviour:
     - NWH.DWP2
     - Assembly-CSharp-firstpass
     - NWH.Common
+    - Barmetler.RoadSystem.Runtime
     - PPv2URPConverters
+    - Barmetler.RoadSystem.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

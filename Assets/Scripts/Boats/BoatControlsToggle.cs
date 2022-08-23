@@ -119,21 +119,5 @@ namespace BoatControls
             playerCam.SetActive(true);
             playerControls.SetActive(true);
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.tag == "Player")
-            {
-                print("Press 'O' to enter boat");
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if(other.tag == "Player")
-            {
-
-            }
-        }
     }
 }
