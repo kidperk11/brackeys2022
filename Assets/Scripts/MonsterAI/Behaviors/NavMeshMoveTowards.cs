@@ -27,6 +27,7 @@ public class NavMeshMoveTowards : Action
         if(!navMeshAgent.pathPending){
             if(!navMeshAgent.isOnOffMeshLink){
                 if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
+                    target.Value = new Vector3(0,0,0);
                     return TaskStatus.Success;
                 }
             }

@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using KinematicCharacterController;
-using KinematicCharacterController.Examples;
 using System.Linq;
 using NWH;
+using BoatControls;
 using NWH.DWP2.ShipController;
 
 namespace KinematicCharacterController
@@ -14,6 +13,7 @@ namespace KinematicCharacterController
         public ExampleCharacterCamera OrbitCamera;
         public Transform CameraFollowPoint;
         public MyCharacterController Character;
+        public BoatControlsToggle boatControls;
 
         //Monster Detection System
         public MonsterSoundDetector monsterSoundDetector;
@@ -25,6 +25,7 @@ namespace KinematicCharacterController
         private const string MouseScrollInput = "Mouse ScrollWheel";
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
+        private bool m_ToggleBoat;
 
         private void Start()
         {
