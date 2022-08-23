@@ -9,6 +9,7 @@ TagManager:
   - Ship
   - Water
   - Ground
+  - Rock
   layers:
   - Default
   - TransparentFX

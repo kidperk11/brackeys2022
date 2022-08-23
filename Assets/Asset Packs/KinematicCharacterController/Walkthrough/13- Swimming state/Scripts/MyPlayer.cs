@@ -109,13 +109,16 @@ namespace KinematicCharacterController
             if(characterInputs.MoveAxisForward != 0){
                 if(!characterInputs.CrouchHeld){
                     monsterSoundDetector.CheckSoundPriority(this.gameObject.tag, character.transform.position);
-                }
+                }else{ monsterSoundDetector.ChangePlayerTagToIdle(); }
                 
             }
             if(characterInputs.MoveAxisRight != 0){
                 if(!characterInputs.CrouchHeld){
                     monsterSoundDetector.CheckSoundPriority(this.gameObject.tag, character.transform.position);
-                }
+                }else{ monsterSoundDetector.ChangePlayerTagToIdle(); }
+            }
+            if(characterInputs.MoveAxisForward == 0 && characterInputs.MoveAxisRight == 0){
+                monsterSoundDetector.ChangePlayerTagToIdle();
             }
         }
     }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7399948889000741863}
   m_Layer: 0
   m_Name: Throwable Rock
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,13 +129,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasBeenThrown: 0
   hasMonsterSpeedModifier: 0
+  monsterSpeedModifier: 0
   rb: {fileID: 2992757137360759539}
   coll: {fileID: 1919476873785346085}
   player: {fileID: 0}
   pickupPoint: {fileID: 0}
   fpsCam: {fileID: 0}
   pickUpRange: 2
-  dropForwardForce: 5
-  dropUpwardForce: 5
+  throwForwardForce: 12
+  throwUpwardForce: 1
   equipped: 0
   monsterSoundDetector: {fileID: 0}

@@ -8,7 +8,8 @@ public class NavMeshMoveTowards : Action
 {
     [SerializeField] private float speed;
     [SerializeField] private float stoppingDistance;
-    [SerializeField] private Transform target;
+    // [SerializeField] private Vector3 target;
+    public SharedVector3 target;
     private NavMeshAgent navMeshAgent;
 
     public override void OnAwake(){
@@ -20,7 +21,7 @@ public class NavMeshMoveTowards : Action
     }
     public override TaskStatus OnUpdate()
     {
-        navMeshAgent.SetDestination(target.position);
+        navMeshAgent.SetDestination(target.Value);
         if(navMeshAgent == null){return TaskStatus.Failure;}
         if(target == null){return TaskStatus.Failure;}
         if(!navMeshAgent.pathPending){
