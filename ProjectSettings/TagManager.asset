@@ -3,20 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Target
-<<<<<<< HEAD
-  - ShipCamera
-  - Ship
-  - Water
-=======
-  - Ground
->>>>>>> 41a524267d9cc9f44a31f84a915ef6833d96c852
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - 

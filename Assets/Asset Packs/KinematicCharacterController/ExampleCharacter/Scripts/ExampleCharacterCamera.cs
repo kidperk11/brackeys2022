@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KinematicCharacterController.Examples
+namespace KinematicCharacterController
 {
     public class ExampleCharacterCamera : MonoBehaviour
     {

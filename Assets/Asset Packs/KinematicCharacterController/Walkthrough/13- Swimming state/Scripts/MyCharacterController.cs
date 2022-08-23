@@ -63,6 +63,7 @@ namespace KinematicCharacterController
 
         public CharacterState CurrentCharacterState { get; private set; }
 
+
         private Collider[] _probedColliders = new Collider[8];
         private Vector3 _moveInputVector;
         private Vector3 _lookInputVector;

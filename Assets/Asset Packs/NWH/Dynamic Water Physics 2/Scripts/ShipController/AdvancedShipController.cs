@@ -80,6 +80,7 @@ namespace NWH.DWP2.ShipController
             public float pitchStabilizationMaxTorque;
 
             private Vector3 _stabilizationTorque = Vector3.zero;
+            //private MyCharacterController character;
 
             /// <summary>
             ///     Anchor script.

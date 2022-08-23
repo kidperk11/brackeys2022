@@ -139,7 +139,7 @@ namespace NWH.Common.Cameras
         }
 
 
-        private void DisableAllCameras()
+        public void DisableAllCameras()
         {
             int cameraCount = cameras.Count;
             for (int i = 0; i < cameraCount; i++)
