@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
-public class NavMeshMoveTowards : Action
+public class NavMeshWander : Action
 {
     [SerializeField] private float speed;
     [SerializeField] private float stoppingDistance;
@@ -27,7 +27,6 @@ public class NavMeshMoveTowards : Action
         if(!navMeshAgent.pathPending){
             if(!navMeshAgent.isOnOffMeshLink){
                 if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
-                    target.Value = new Vector3(0,0,0);
                     return TaskStatus.Success;
                 }
             }
