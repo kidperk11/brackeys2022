@@ -59,7 +59,7 @@ namespace BoatControls
         {
             m_ToggleBoat = Input.GetKeyDown(KeyCode.O);
 
-            if (IsPlayerInRange.m_IsPlayerInRange)
+            if (IsPlayerInRange.IsPlayerInRange)
             {
                 interactWithBoatText.enabled = true;
                 if (m_ToggleBoat)

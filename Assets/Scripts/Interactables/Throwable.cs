@@ -7,6 +7,7 @@ public class Throwable : Pickup
     public bool hasBeenThrown;
     public bool hasMonsterSpeedModifier;
     public float monsterSpeedModifier;
+    public Transform fpsCam;
 
     public float throwForwardForce, throwUpwardForce;
 
@@ -33,11 +34,15 @@ public class Throwable : Pickup
         //Check if player is in range and "E" is pressed
         Vector3 distanceToPlayer = player.position - transform.position;
         if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull)
-            PickupItem(pickupPoint);
+        
+            PickupItem(pickupPoint, "Hold");
+        
 
         //Drop if equipped and "Q" is pressed
         if (equipped && Input.GetKeyDown(KeyCode.Q))
-            Drop();
+        
+            Drop("Hold");
+        
 
         //Throw if equipped and "Left Mouse" is pressed
         if (equipped && Input.GetKeyDown(KeyCode.Mouse0)) Throw();
