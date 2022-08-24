@@ -23,9 +23,9 @@ namespace BoatControls
         public GameObject playerControls;
 
         [Header("Boat Interaction")]
-        public bool playerInRangeBool;
         public SphereCollider playerEnterRange;
         public TextMeshProUGUI interactWithBoatText;
+        public ColliderTriggerRange IsPlayerInRange;
 
         [Header("Visual Debugger")]
         public bool isPlayerEnabled;
@@ -36,7 +36,7 @@ namespace BoatControls
 
         private void Start()
         {
-            playerInRangeBool = false;
+            IsPlayerInRange.m_IsPlayerInRange = false;
             interactWithBoatText.enabled = false;
 
             switch (gameLaunchController.ToString())
@@ -51,7 +51,6 @@ namespace BoatControls
                     EnableBoat();
                     DisablePlayer();
                     currentlyActiveCamera = ControllableCameras.Boat;
-
                     break;
             }
         }
@@ -60,7 +59,7 @@ namespace BoatControls
         {
             m_ToggleBoat = Input.GetKeyDown(KeyCode.O);
 
-            if (playerInRangeBool)
+            if (IsPlayerInRange.m_IsPlayerInRange)
             {
                 interactWithBoatText.enabled = true;
                 if (m_ToggleBoat)

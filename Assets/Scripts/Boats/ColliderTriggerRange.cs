@@ -4,20 +4,19 @@ using UnityEngine;
 
 namespace BoatControls
 {
-    public class PlayerInBoatRange : MonoBehaviour
+    public class ColliderTriggerRange : MonoBehaviour
     {
-        private BoatControlsToggle boatToggle;
+        public bool IsPlayerInRange { 
+            get { return m_IsPlayerInRange; } 
+            set { m_IsPlayerInRange = value; } }
 
-        private void Start()
-        {
-            boatToggle = GetComponentInParent<BoatControlsToggle>();
-        }
+        public bool m_IsPlayerInRange;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player")
             {
-                boatToggle.playerInRangeBool = true;
+                m_IsPlayerInRange = true;
             }
         }
 
@@ -25,7 +24,7 @@ namespace BoatControls
         {
             if (other.tag == "Player")
             {
-                boatToggle.playerInRangeBool = false;
+                m_IsPlayerInRange = false;
             }
         }
     }
