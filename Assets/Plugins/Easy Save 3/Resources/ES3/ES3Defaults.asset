@@ -34,9 +34,9 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - NWH.Common
     - Barmetler.RoadSystem.Runtime
+    - AmplifyShaderEditor
     - Barmetler.RoadSystem.Editor
     - PPv2URPConverters
-    - AmplifyShaderEditor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

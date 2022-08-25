@@ -70,6 +70,7 @@ public class PaperPickup : Pickup
                 }
 
             }
+            
         }
         else
         {
