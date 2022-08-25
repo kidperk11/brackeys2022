@@ -11,6 +11,12 @@ public class PaperPickup : Pickup
     public GameObject paperMesh;
     public MeshCollider meshColl;
 
+    //Variables for interacting with the encounterManager
+    public EncounterManager encounterManager;
+    public GameObject clueArea;
+    public ClueAreaExit clueAreaExit;
+    public Transform monsterSpawn;
+
     private bool m_pickupItem;
     private bool flipped = false;
 
@@ -45,6 +51,8 @@ public class PaperPickup : Pickup
             Rigidbody temp = gameObject.AddComponent<Rigidbody>();
             rb = temp;
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            encounterManager.ActivateEncounter(clueArea, monsterSpawn);
+            clueAreaExit.enabled = true;
         }
 
         if(equipped)
@@ -68,7 +76,6 @@ public class PaperPickup : Pickup
                     flipped = false;
                     print(flipped);
                 }
-
             }
             
         }

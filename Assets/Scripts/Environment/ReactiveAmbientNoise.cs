@@ -18,9 +18,24 @@ public class ReactiveAmbientNoise : MonoBehaviour
        alertSound.volume = 0; 
     }
 
+    private void OnEnable() {
+        alertSound.volume = 0; 
+        alertSound.Play();
+        monster = GameObject.Find("Monster(Clone)");
+    }
+
+    private void OnDisable() {
+        alertSound.volume = 0;
+        alertSound.Stop();
+        monster = null;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if(monster == null){
+            monster = GameObject.Find("Monster(Clone)");
+        }
         if(Vector3.Distance(monster.transform.position, character.transform.position) <= desiredDistance){
             volumeRatio = (Vector3.Distance(monster.transform.position, character.transform.position) - 8) / (desiredDistance - 8);
             if(volumeRatio >= 0){
