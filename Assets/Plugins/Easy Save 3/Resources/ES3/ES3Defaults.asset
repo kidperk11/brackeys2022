@@ -34,6 +34,7 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - NWH.Common
     - Barmetler.RoadSystem.Runtime
+    - AmplifyShaderEditor
     - Barmetler.RoadSystem.Editor
     - PPv2URPConverters
     showAdvancedSettings: 0
