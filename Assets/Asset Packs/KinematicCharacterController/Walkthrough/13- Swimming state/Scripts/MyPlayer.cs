@@ -10,12 +10,16 @@ namespace KinematicCharacterController
 {
     public class MyPlayer : MonoBehaviour
     {
+        [Header("DEBUG")]
+        public bool enableMonster;
+
+        [Header("Control System")]
         public ExampleCharacterCamera OrbitCamera;
         public Transform CameraFollowPoint;
         public MyCharacterController Character;
         public BoatControlsToggle boatControls;
 
-        //Monster Detection System
+        [Header("Monster Detection System")]
         public MonsterSoundDetector monsterSoundDetector;
         public GameObject character;
         public GameObject heldObject;
@@ -106,20 +110,35 @@ namespace KinematicCharacterController
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
 
-            //Monster Detection System
-            if(characterInputs.MoveAxisForward != 0){
-                if(!characterInputs.CrouchHeld){
-                    monsterSoundDetector.CheckSoundPriority(this.gameObject.tag, character.transform.position);
-                }else{ monsterSoundDetector.ChangePlayerTagToIdle(); }
+            if (enableMonster)
+            {
+                if(monsterSoundDetector == null){
+                    monsterSoundDetector = FindObjectOfType<MonsterSoundDetector>();
+                } else {
+                    //Monster Detection System
+                    if (characterInputs.MoveAxisForward != 0)
+                    {
+                        if (!characterInputs.CrouchHeld)
+                        {
+                            monsterSoundDetector.CheckSoundPriority(this.gameObject.tag, character.transform.position);
+                        }
+                        else { monsterSoundDetector.ChangePlayerTagToIdle(); }
+
+                    }
+                    if (characterInputs.MoveAxisRight != 0)
+                    {
+                        if (!characterInputs.CrouchHeld)
+                        {
+                            monsterSoundDetector.CheckSoundPriority(this.gameObject.tag, character.transform.position);
+                        }
+                        else { monsterSoundDetector.ChangePlayerTagToIdle(); }
+                    }
+                    if (characterInputs.MoveAxisForward == 0 && characterInputs.MoveAxisRight == 0)
+                    {
+                        monsterSoundDetector.ChangePlayerTagToIdle();
+                    }
+                }
                 
-            }
-            if(characterInputs.MoveAxisRight != 0){
-                if(!characterInputs.CrouchHeld){
-                    monsterSoundDetector.CheckSoundPriority(this.gameObject.tag, character.transform.position);
-                }else{ monsterSoundDetector.ChangePlayerTagToIdle(); }
-            }
-            if(characterInputs.MoveAxisForward == 0 && characterInputs.MoveAxisRight == 0){
-                monsterSoundDetector.ChangePlayerTagToIdle();
             }
         }
     }

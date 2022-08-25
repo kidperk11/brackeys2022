@@ -23,9 +23,9 @@ namespace BoatControls
         public GameObject playerControls;
 
         [Header("Boat Interaction")]
-        public bool playerInRangeBool;
         public SphereCollider playerEnterRange;
         public TextMeshProUGUI interactWithBoatText;
+        public ColliderTriggerRange IsPlayerInRange;
 
         [Header("Visual Debugger")]
         public bool isPlayerEnabled;
@@ -36,22 +36,23 @@ namespace BoatControls
 
         private void Start()
         {
-            playerInRangeBool = false;
+            IsPlayerInRange.m_IsPlayerInRange = false;
             interactWithBoatText.enabled = false;
 
             switch (gameLaunchController.ToString())
             {
                 case "Player":
+                    interactWithBoatText.text = "Press 'O' to Enter Boat";
                     EnablePlayer();
                     DisableBoat();
                     currentlyActiveCamera = ControllableCameras.Player;
                     break;
 
                 case "Boat":
+                    interactWithBoatText.text = "Press 'O' to Exit Boat";
                     EnableBoat();
                     DisablePlayer();
                     currentlyActiveCamera = ControllableCameras.Boat;
-
                     break;
             }
         }
@@ -60,7 +61,7 @@ namespace BoatControls
         {
             m_ToggleBoat = Input.GetKeyDown(KeyCode.O);
 
-            if (playerInRangeBool)
+            if (IsPlayerInRange.IsPlayerInRange)
             {
                 interactWithBoatText.enabled = true;
                 if (m_ToggleBoat)
@@ -79,11 +80,13 @@ namespace BoatControls
             switch (currentlyActiveCamera.ToString())
             {
                 case "Player":
+                    interactWithBoatText.text = "Press 'O' to Exit Boat";
                     EnableBoat();
                     DisablePlayer();
                     currentlyActiveCamera = ControllableCameras.Boat;
                     break;
                 case "Boat":
+                    interactWithBoatText.text = "Press 'O' to Enter Boat";
                     EnablePlayer();
                     DisableBoat();
                     currentlyActiveCamera = ControllableCameras.Player;

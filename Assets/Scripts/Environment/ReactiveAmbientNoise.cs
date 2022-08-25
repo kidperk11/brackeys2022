@@ -4,31 +4,51 @@ using UnityEngine;
 
 public class ReactiveAmbientNoise : MonoBehaviour
 {
-    public AudioSource sound;
+    public AudioSource ambientSound;
+    public AudioSource alertSound;
     public GameObject monster;
     public GameObject character;
     public float volumeRatio;
     public float desiredDistance;
+    public float alertDistance;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       alertSound.volume = 0; 
+    }
+
+    private void OnEnable() {
+        alertSound.volume = 0; 
+        alertSound.Play();
+        monster = GameObject.Find("Monster(Clone)");
+    }
+
+    private void OnDisable() {
+        alertSound.volume = 0;
+        alertSound.Stop();
+        monster = null;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(monster == null){
+            monster = GameObject.Find("Monster(Clone)");
+        }
         if(Vector3.Distance(monster.transform.position, character.transform.position) <= desiredDistance){
-            volumeRatio = (Vector3.Distance(monster.transform.position, character.transform.position) - 3) / (desiredDistance - 3);
+            volumeRatio = (Vector3.Distance(monster.transform.position, character.transform.position) - 8) / (desiredDistance - 8);
             if(volumeRatio >= 0){
+                alertSound.volume = 0;
                 Debug.Log(volumeRatio);
-                sound.volume = volumeRatio;
+                ambientSound.volume = volumeRatio;
             }else{
-                sound.volume = 0;
+                ambientSound.volume = 0;
+                volumeRatio = Vector3.Distance(monster.transform.position, character.transform.position) / 8;
+                alertSound.volume = 1 - volumeRatio;
             }
         }else{
-            sound.volume = 1;
+            ambientSound.volume = 1;
         }
     }
 }
