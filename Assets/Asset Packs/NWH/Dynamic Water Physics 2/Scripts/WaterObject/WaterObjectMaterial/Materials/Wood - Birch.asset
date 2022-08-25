@@ -1,15 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8588a0103d7149e58d7a81d9673d5330, type: 3}
-  m_Name: Wood - Birch
-  m_EditorClassIdentifier: 
-  density: 670
+version https://git-lfs.github.com/spec/v1
+oid sha256:29d32b4467aa8108378e918cd6986e809f3b4cd856b92858c425ab5dffc8edb7
+size 431
