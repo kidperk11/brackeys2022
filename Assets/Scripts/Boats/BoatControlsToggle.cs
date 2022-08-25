@@ -42,12 +42,14 @@ namespace BoatControls
             switch (gameLaunchController.ToString())
             {
                 case "Player":
+                    interactWithBoatText.text = "Press 'O' to Enter Boat";
                     EnablePlayer();
                     DisableBoat();
                     currentlyActiveCamera = ControllableCameras.Player;
                     break;
 
                 case "Boat":
+                    interactWithBoatText.text = "Press 'O' to Exit Boat";
                     EnableBoat();
                     DisablePlayer();
                     currentlyActiveCamera = ControllableCameras.Boat;
@@ -78,11 +80,13 @@ namespace BoatControls
             switch (currentlyActiveCamera.ToString())
             {
                 case "Player":
+                    interactWithBoatText.text = "Press 'O' to Exit Boat";
                     EnableBoat();
                     DisablePlayer();
                     currentlyActiveCamera = ControllableCameras.Boat;
                     break;
                 case "Boat":
+                    interactWithBoatText.text = "Press 'O' to Enter Boat";
                     EnablePlayer();
                     DisableBoat();
                     currentlyActiveCamera = ControllableCameras.Player;

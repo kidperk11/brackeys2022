@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1417615411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1417615414}
+  - component: {fileID: 1417615413}
+  - component: {fileID: 1417615412}
+  m_Layer: 0
+  m_Name: InteractionRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1417615414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417615411}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2046443008777942408}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1417615413
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417615411}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.007
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1417615412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417615411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8283aaeab6c32438c390192a478f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsPlayerInRange: 0
 --- !u!1 &1670199662545088306
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,10 +72,8 @@ GameObject:
   - component: {fileID: 877429856555863783}
   - component: {fileID: 2207433840052005006}
   - component: {fileID: 2207433840052005007}
-  - component: {fileID: 2207433839354386818}
-  - component: {fileID: 2207433839354386819}
   - component: {fileID: 2207433839354386820}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Paper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +91,8 @@ Transform:
   m_LocalPosition: {x: 1249.6858, y: 2.725186, z: 1081.8301}
   m_LocalScale: {x: 200, y: 200.00006, z: 200.00005}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1417615414}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -35.983, y: -165, z: -281.537}
@@ -118,32 +176,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 4951e511bde98b44baa710a74cf94ca6, type: 3}
---- !u!135 &2207433839354386818
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670199662545088306}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.007
-  m_Center: {x: 0.00000011920929, y: 0, z: -0.00000047683716}
---- !u!114 &2207433839354386819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670199662545088306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8283aaeab6c32438c390192a478f95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsPlayerInRange: 0
 --- !u!114 &2207433839354386820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,13 +189,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2207433840052005006}
-  coll: {fileID: 0}
+  coll: {fileID: 1417615413}
   equipped: 0
   player: {fileID: 0}
   pickupPoint: {fileID: 0}
   pickUpRange: 2
-  offset: {x: 0, y: 0, z: 10}
+  positionOffset: {x: 0, y: 0, z: 0.5}
+  rotateOffset: {x: 0.70710677, y: 0.70710677, z: -0.00000003090862, w: -0.00000003090862}
   interactWithObjectGUI: {fileID: 0}
-  isItemInRange: {fileID: 2207433839354386819}
+  flipPaperGUI: {fileID: 0}
+  isItemInRange: {fileID: 1417615412}
   paperMesh: {fileID: 4317565943367539270, guid: 2e856bb7cc1ee3c4183bf07e95ec7456,
     type: 3}
+  meshColl: {fileID: 2207433840052005007}
