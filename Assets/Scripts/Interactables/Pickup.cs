@@ -41,7 +41,9 @@ public class Pickup : MonoBehaviour
                 transform.SetParent(pickupPoint);
                 transform.localPosition = Vector3.zero;
                 transform.localPosition = positionOffset;
-                transform.localRotation = Quaternion.Euler(Vector3.zero);
+
+                //transform.localRotation = Quaternion.Euler(Vector3.zero);
+                transform.localRotation = new Quaternion(0f, 0f, 0f, 0f);
                 transform.localRotation = rotateOffset;
 
 

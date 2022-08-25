@@ -6,11 +6,13 @@ using TMPro;
 public class PaperPickup : Pickup
 {
     public TextMeshProUGUI interactWithObjectGUI;
+    public TextMeshProUGUI flipPaperGUI;
     public ColliderTriggerRange isItemInRange;
     public GameObject paperMesh;
     public MeshCollider meshColl;
 
     private bool m_pickupItem;
+    private bool flipped = false;
 
 
     private void Update()
@@ -37,6 +39,7 @@ public class PaperPickup : Pickup
         if (equipped && Input.GetKeyDown(KeyCode.Q))
         {
             Drop("Inspect");
+            interactWithObjectGUI.text = "Press 'E' to Pickup";
             coll.enabled = true;
             meshColl.enabled = true;
             Rigidbody temp = gameObject.AddComponent<Rigidbody>();
@@ -46,7 +49,33 @@ public class PaperPickup : Pickup
 
         if(equipped)
         {
-            transform.localRotation = rotateOffset;
+            interactWithObjectGUI.text = "Press 'Q' to Drop";
+            flipPaperGUI.enabled = true;
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if(!flipped)
+                {
+                    transform.localRotation = new Quaternion(0f, 0f, -070711f, -070711f);
+                    print(transform.localRotation);
+                    flipped = true;
+                    print(flipped);
+                }
+                else
+                {
+                    transform.localRotation = new Quaternion(0.070711f, 0.070711f, 0f, 0f);
+                    print(transform.localRotation);
+                    flipped = false;
+                    print(flipped);
+                }
+
+            }
+            
+        }
+        else
+        {
+            flipPaperGUI.enabled = false;
+            flipped = false;
         }
     }
 }

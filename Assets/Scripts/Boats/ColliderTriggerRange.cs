@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(SphereCollider))]
 public class ColliderTriggerRange : MonoBehaviour
 {
     public bool IsPlayerInRange { 
@@ -10,6 +10,13 @@ public class ColliderTriggerRange : MonoBehaviour
         set { m_IsPlayerInRange = value; } }
 
     public bool m_IsPlayerInRange;
+
+    private SphereCollider sc;
+    private void Awake()
+    {
+        sc = GetComponent<SphereCollider>();
+        sc.isTrigger = true;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
