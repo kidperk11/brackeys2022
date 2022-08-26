@@ -10,9 +10,11 @@ namespace KinematicCharacterController
 {
     public class MyPlayer : MonoBehaviour
     {
+        public bool EnablePlayer { set { m_EnablePlayer = value; } }
+
         [Header("DEBUG")]
         public bool enableMonster;
-        public bool enablePlayer;
+        [SerializeField] private bool m_EnablePlayer;
 
         [Header("Control System")]
         public ExampleCharacterCamera OrbitCamera;
@@ -113,7 +115,7 @@ namespace KinematicCharacterController
 
 
 
-            if (enablePlayer)
+            if (m_EnablePlayer)
             {
                 // Apply inputs to character
                 Character.SetInputs(ref characterInputs);

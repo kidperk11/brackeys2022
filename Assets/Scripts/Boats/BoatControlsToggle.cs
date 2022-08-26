@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using KinematicCharacterController;
 
 namespace BoatControls
 {
@@ -21,6 +22,9 @@ namespace BoatControls
         public GameObject boatControls;
         public GameObject playerCam;
         public GameObject playerControls;
+        public GameObject player;
+        public GameObject playerComponent;
+        public GameObject playerRideTransform;
 
         [Header("Boat Interaction")]
         public SphereCollider playerEnterRange;
@@ -80,15 +84,26 @@ namespace BoatControls
             switch (currentlyActiveCamera.ToString())
             {
                 case "Player":
+
                     interactWithBoatText.text = "Press 'O' to Exit Boat";
+
                     EnableBoat();
                     DisablePlayer();
+
+                    player.transform.SetParent(playerRideTransform.transform);
+                    player.transform.position = playerRideTransform.transform.position;
                     currentlyActiveCamera = ControllableCameras.Boat;
                     break;
                 case "Boat":
                     interactWithBoatText.text = "Press 'O' to Enter Boat";
+
+                    player.transform.SetParent(playerComponent.transform);
+                    player.transform.position = playerRideTransform.transform.position;
+
+
                     EnablePlayer();
                     DisableBoat();
+
                     currentlyActiveCamera = ControllableCameras.Player;
                     break;
             }
@@ -111,6 +126,8 @@ namespace BoatControls
 
         private void DisablePlayer()
         {
+            player.GetComponent<MyCharacterController>().enabled = false;
+            player.GetComponent<KinematicCharacterMotor>().enabled = false;
             isPlayerEnabled = false;
             playerCam.SetActive(false);
             playerControls.SetActive(false);
@@ -118,6 +135,8 @@ namespace BoatControls
 
         private void EnablePlayer()
         {
+            player.GetComponent<KinematicCharacterMotor>().enabled = true;
+            player.GetComponent<MyCharacterController>().enabled = true;
             isPlayerEnabled = true;
             playerCam.SetActive(true);
             playerControls.SetActive(true);
