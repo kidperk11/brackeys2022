@@ -14,7 +14,7 @@ public class PaperPickup : Pickup
     //Variables for interacting with the encounterManager
     public EncounterManager encounterManager;
     public GameObject clueArea;
-    public ClueAreaExit clueAreaExit;
+    public GameObject clueAreaExit;
     public Transform monsterSpawn;
 
     private bool m_pickupItem;
@@ -52,7 +52,7 @@ public class PaperPickup : Pickup
             rb = temp;
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             encounterManager.ActivateEncounter(clueArea, monsterSpawn);
-            clueAreaExit.enabled = true;
+            clueAreaExit.SetActive(true);
         }
 
         if(equipped)
