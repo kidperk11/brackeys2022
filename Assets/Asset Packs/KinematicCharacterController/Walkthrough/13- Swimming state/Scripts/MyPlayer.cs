@@ -12,6 +12,7 @@ namespace KinematicCharacterController
     {
         [Header("DEBUG")]
         public bool enableMonster;
+        public bool enablePlayer;
 
         [Header("Control System")]
         public ExampleCharacterCamera OrbitCamera;
@@ -93,22 +94,32 @@ namespace KinematicCharacterController
 
         private void HandleCharacterInput()
         {
-            PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
+           
+                PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
 
-            // Build the CharacterInputs struct
-            characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
-            characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
-            characterInputs.CameraRotation = OrbitCamera.Transform.rotation;
-            characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
-            characterInputs.JumpHeld = Input.GetKey(KeyCode.Space);
-            characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
-            characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
-            characterInputs.CrouchHeld = Input.GetKey(KeyCode.C);
-            characterInputs.InteractDown = Input.GetKeyDown(KeyCode.Mouse0);
-            characterInputs.InteractUp = Input.GetKeyUp(KeyCode.Mouse0);
+                // Build the CharacterInputs struct
+                characterInputs.MoveAxisForward = Input.GetAxisRaw(VerticalInput);
+                characterInputs.MoveAxisRight = Input.GetAxisRaw(HorizontalInput);
+                characterInputs.CameraRotation = OrbitCamera.Transform.rotation;
+                characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
+                characterInputs.JumpHeld = Input.GetKey(KeyCode.Space);
+                characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
+                characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
+                characterInputs.CrouchHeld = Input.GetKey(KeyCode.C);
+                characterInputs.InteractDown = Input.GetKeyDown(KeyCode.Mouse0);
+                characterInputs.InteractUp = Input.GetKeyUp(KeyCode.Mouse0);
+                characterInputs.SprintDown = Input.GetKeyDown(KeyCode.LeftShift);
+                characterInputs.SprintUp = Input.GetKeyUp(KeyCode.LeftShift);
 
-            // Apply inputs to character
-            Character.SetInputs(ref characterInputs);
+
+
+            if (enablePlayer)
+            {
+                // Apply inputs to character
+                Character.SetInputs(ref characterInputs);
+            }
+
+
 
             if (enableMonster)
             {

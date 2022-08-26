@@ -23,6 +23,8 @@ namespace KinematicCharacterController
         public bool CrouchHeld;
         public bool InteractDown;
         public bool InteractUp;
+        public bool SprintDown;
+        public bool SprintUp;
     }
 
     public class MyCharacterController : MonoBehaviour, ICharacterController
@@ -36,6 +38,8 @@ namespace KinematicCharacterController
         public float MaxStableDistanceFromLedge = 5f;
         [Range(0f, 180f)]
         public float MaxStableDenivelationAngle = 180f;
+        public float crouchSpeedModifier;
+        public float sprintSpeedModifier;
 
         [Header("Air Movement")]
         public float MaxAirMoveSpeed = 10f;
@@ -66,6 +70,7 @@ namespace KinematicCharacterController
         public CharacterState CurrentCharacterState { get; private set; }
 
 
+        private float _moveSpeedHolder;
         private Collider[] _probedColliders = new Collider[8];
         private Vector3 _moveInputVector;
         private Vector3 _lookInputVector;
@@ -82,6 +87,7 @@ namespace KinematicCharacterController
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
+        private bool _isSprinting = false;
         private Collider _waterZone;
 
         private void Start()
@@ -91,6 +97,8 @@ namespace KinematicCharacterController
 
             // Handle initial state
             TransitionToState(CharacterState.Default);
+
+            _moveSpeedHolder = MaxStableMoveSpeed;
         }
 
         /// <summary>
@@ -172,6 +180,8 @@ namespace KinematicCharacterController
                             _jumpRequested = true;
                         }
 
+
+
                         // Crouching input
                         if (inputs.CrouchDown)
                         {
@@ -182,12 +192,27 @@ namespace KinematicCharacterController
                                 _isCrouching = true;
                                 Motor.SetCapsuleDimensions(0.5f, 1f, 0.5f);
                                 MeshRoot.localScale = new Vector3(1f, 0.5f, 1f);
+                                MaxStableMoveSpeed *= crouchSpeedModifier;
                             }
                         }
                         else if (inputs.CrouchUp)
                         {
                             _shouldBeCrouching = false;
+                            MaxStableMoveSpeed = _moveSpeedHolder;
                         }
+
+
+                        if (inputs.SprintDown && !_isCrouching)
+                        {
+                            _isSprinting = true;
+                            MaxStableMoveSpeed *= sprintSpeedModifier;
+                        }
+                        if (inputs.SprintUp)
+                        {
+                            _isSprinting = false;
+                            MaxStableMoveSpeed = _moveSpeedHolder;
+                        }
+
                         break;
                     }
                 case CharacterState.Swimming:
@@ -444,6 +469,8 @@ namespace KinematicCharacterController
                                 _timeSinceLastAbleToJump += deltaTime;
                             }
                         }
+
+
 
                         // Handle uncrouching
                         if (_isCrouching && !_shouldBeCrouching)
