@@ -9,7 +9,8 @@ public class Pickup : MonoBehaviour
     public SphereCollider coll;
     public bool equipped;
     public static bool slotFull;
-    public Transform player, pickupPoint;
+    public GameObject player;
+    public Transform pickupPoint;
     public float pickUpRange;
 
     public Vector3 positionOffset;

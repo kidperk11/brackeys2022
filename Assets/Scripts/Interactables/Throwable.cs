@@ -20,7 +20,6 @@ public class Throwable : Pickup
     private void Start()
     {
         fpsCam = GameObject.Find("Character Camera").GetComponent<Transform>();
-        player = GameObject.Find("Character").GetComponent<Transform>();
         pickupPoint = GameObject.Find("PickupPosition").GetComponent<Transform>();
         //Setup
         if (!equipped)
@@ -42,7 +41,7 @@ public class Throwable : Pickup
             monsterSoundDetector = FindObjectOfType<MonsterSoundDetector>();
         }
         //Check if player is in range and "E" is pressed
-        Vector3 distanceToPlayer = player.position - transform.position;
+        Vector3 distanceToPlayer = player.transform.position - transform.position;
         if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull)
         
             PickupItem(pickupPoint, "Hold");

@@ -87,7 +87,6 @@ namespace KinematicCharacterController
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
-        private bool _isSprinting = false;
         private Collider _waterZone;
 
         private void Start()
@@ -204,12 +203,10 @@ namespace KinematicCharacterController
 
                         if (inputs.SprintDown && !_isCrouching)
                         {
-                            _isSprinting = true;
                             MaxStableMoveSpeed *= sprintSpeedModifier;
                         }
                         if (inputs.SprintUp)
                         {
-                            _isSprinting = false;
                             MaxStableMoveSpeed = _moveSpeedHolder;
                         }
 

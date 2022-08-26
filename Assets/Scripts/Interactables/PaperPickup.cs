@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using KinematicCharacterController;
 
 public class PaperPickup : Pickup
 {
@@ -45,6 +46,7 @@ public class PaperPickup : Pickup
         if (equipped && Input.GetKeyDown(KeyCode.Q))
         {
             Drop("Inspect");
+            player.GetComponentInChildren<MyPlayer>().EnablePlayer = true;
             interactWithObjectGUI.text = "Press 'E' to Pickup";
             coll.enabled = true;
             meshColl.enabled = true;
@@ -59,6 +61,7 @@ public class PaperPickup : Pickup
         {
             interactWithObjectGUI.text = "Press 'Q' to Drop";
             flipPaperGUI.enabled = true;
+            player.GetComponentInChildren<MyPlayer>().EnablePlayer = false;
 
             if (Input.GetKeyDown(KeyCode.F))
             {
