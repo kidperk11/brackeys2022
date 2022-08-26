@@ -10,6 +10,10 @@ public class ReactiveLightFlicker : MonoBehaviour
     public float blinkTimer;
     public float blinkDistance;
     public AudioSource soundEffect;
+
+    private void OnEnable() {
+        monster = GameObject.Find("Monster(Clone)");
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +23,9 @@ public class ReactiveLightFlicker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(monster == null){
+            monster = GameObject.Find("Monster(Clone)");
+        }
         if(Vector3.Distance(monster.transform.position, transform.position) <= blinkDistance){
             blinkRatio = Vector3.Distance(monster.transform.position, transform.position) / blinkDistance;
         }else{

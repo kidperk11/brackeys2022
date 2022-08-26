@@ -53,8 +53,10 @@ public class PaperPickup : Pickup
             Rigidbody temp = gameObject.AddComponent<Rigidbody>();
             rb = temp;
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-            encounterManager.ActivateEncounter(clueArea, monsterSpawn);
-            clueAreaExit.SetActive(true);
+            if(encounterManager.monster == null){
+                encounterManager.ActivateEncounter(clueArea, monsterSpawn);
+                clueAreaExit.SetActive(true);
+            }
         }
 
         if(equipped)
