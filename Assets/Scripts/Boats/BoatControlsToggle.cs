@@ -88,19 +88,23 @@ namespace BoatControls
 
                     interactWithBoatText.text = "Press 'O' to Exit Boat";
                     EnableBoat();
+                    player.GetComponent<KinematicCharacterMotor>().SetPositionAndRotation(playerRideTransform.transform.position, playerRideTransform.transform.rotation);
+                    player.transform.SetParent(playerRideTransform.transform);
+
                     DisablePlayer();
 
-                    //player.transform.SetParent(playerRideTransform.transform);
-
                     //player.transform.position = playerRideTransform.transform.position;
-                    player.GetComponent<KinematicCharacterMotor>().SetPositionAndRotation(playerRideTransform.transform.position, playerRideTransform.transform.rotation);
+                    
                     currentlyActiveCamera = ControllableCameras.Boat;
                     break;
                 case "Boat":
                     interactWithBoatText.text = "Press 'O' to Enter Boat";
                     EnablePlayer();
+                    player.transform.SetParent(playerComponent.transform);
+                    player.GetComponent<KinematicCharacterMotor>().SetPositionAndRotation(playerRideTransform.transform.position, playerRideTransform.transform.rotation);
                     DisableBoat();
-                    //player.transform.SetParent(playerComponents.transform);
+
+                    
                     //player.transform.position = playerRideTransform.transform.position;
                     currentlyActiveCamera = ControllableCameras.Player;
                     break;
@@ -127,8 +131,9 @@ namespace BoatControls
 
         private void DisablePlayer()
         {
-            //player.GetComponent<MyCharacterController>().enabled = false;
-            //player.GetComponent<KinematicCharacterMotor>().enabled = false;
+            player.GetComponent<MyCharacterController>().enabled = false;
+            player.GetComponent<KinematicCharacterMotor>().enabled = false;
+            //player.GetComponentInChildren<MyPlayer>().EnablePlayer = false;
             isPlayerEnabled = false;
             playerCam.SetActive(false);
             playerControls.SetActive(false);
@@ -136,8 +141,9 @@ namespace BoatControls
 
         private void EnablePlayer()
         {
-            //player.GetComponent<KinematicCharacterMotor>().enabled = true;
-            //player.GetComponent<MyCharacterController>().enabled = true;
+            player.GetComponent<KinematicCharacterMotor>().enabled = true;
+            player.GetComponent<MyCharacterController>().enabled = true;
+            //player.GetComponentInChildren<MyPlayer>().EnablePlayer = true;
             isPlayerEnabled = true;
             playerCam.SetActive(true);
             playerControls.SetActive(true);
