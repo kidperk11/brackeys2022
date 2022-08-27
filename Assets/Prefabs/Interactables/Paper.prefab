@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2207433840052005006}
-  coll: {fileID: 1417615413}
+  coll: {fileID: 2207433840052005007}
   equipped: 0
   player: {fileID: 0}
   pickupPoint: {fileID: 0}
@@ -202,3 +202,7 @@ MonoBehaviour:
   paperMesh: {fileID: 4317565943367539270, guid: 2e856bb7cc1ee3c4183bf07e95ec7456,
     type: 3}
   meshColl: {fileID: 2207433840052005007}
+  encounterManager: {fileID: 0}
+  clueArea: {fileID: 0}
+  clueAreaExit: {fileID: 0}
+  monsterSpawn: {fileID: 0}

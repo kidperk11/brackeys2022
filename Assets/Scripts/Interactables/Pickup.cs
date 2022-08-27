@@ -6,7 +6,7 @@ public class Pickup : MonoBehaviour
 {
 
     public Rigidbody rb;
-    public SphereCollider coll;
+    public MeshCollider coll;
     public bool equipped;
     public static bool slotFull;
     public GameObject player;

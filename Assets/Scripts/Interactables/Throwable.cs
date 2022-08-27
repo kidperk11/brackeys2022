@@ -21,12 +21,7 @@ public class Throwable : Pickup
     {
         fpsCam = GameObject.Find("Character Camera").GetComponent<Transform>();
         pickupPoint = GameObject.Find("PickupPosition").GetComponent<Transform>();
-        //Setup
-        if (!equipped)
-        {
-            rb.isKinematic = false;
-            coll.isTrigger = false;
-        }
+        player = GameObject.Find("Character");
         if (equipped)
         {
             rb.isKinematic = true;
