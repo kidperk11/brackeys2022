@@ -6,7 +6,7 @@ using UnityEngine;
 public class WaterlogRespawn : MonoBehaviour
 {
     public WaterObject waterCheck;
-    public float timeToRespawn = 2f;
+    public float timeToRespawn = 3f;
     public RespawnPoints respawnPoints;
     public GameObject boat;
 
@@ -44,11 +44,16 @@ public class WaterlogRespawn : MonoBehaviour
         respawnPoint = respawnPoints.FindClosest();
         respawnTransform = respawnPoint.transform.position;
         respawnRotation = respawnPoint.transform.rotation;
-
-        gameObject.transform.position = respawnPoint.transform.position;
-        gameObject.transform.rotation = respawnPoint.transform.rotation;
-        print("Respawning");
-        print(needToRespawn);
+        boat.transform.position = respawnPoint.transform.position;
+        boat.transform.rotation = respawnPoint.transform.rotation;
         needToRespawn = false;
+        this.enabled = false;
+        StartCoroutine(TempDisbleThisScript());
+    }
+
+    private IEnumerator TempDisbleThisScript()
+    {
+        yield return new WaitForSeconds(5f);
+        this.enabled = true;
     }
 }

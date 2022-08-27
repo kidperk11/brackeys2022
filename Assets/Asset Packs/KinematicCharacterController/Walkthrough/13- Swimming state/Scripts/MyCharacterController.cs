@@ -68,7 +68,7 @@ namespace KinematicCharacterController
         public Transform MeshRoot;
 
         public CharacterState CurrentCharacterState { get; private set; }
-        public Vector3 PlayerVelocity {  get { return m_PlayerVelocity; } }
+        public Vector3 PlayerVelocity { get { return m_PlayerVelocity; } }
         public bool IsWalking { get { return m_isWalking; } }
         public bool IsRunning { get { return m_isRunning; } }
         public float MoveAxisRight { get { return m_MoveAxisRight; } }
@@ -573,7 +573,7 @@ namespace KinematicCharacterController
 
         public void SetCheckpoint(Checkpoint checkpoint)
         {
-            if(checkpoint != null)
+            if (checkpoint != null)
             {
                 m_CurrentCheckpoint = checkpoint;
             }
@@ -582,11 +582,20 @@ namespace KinematicCharacterController
         public void Respawn()
         {
             StartCoroutine(RespawnRoutine());
+            if (m_CurrentCheckpoint != null)
+            {
+                Motor.SetPositionAndRotation(m_CurrentCheckpoint.transform.position, m_CurrentCheckpoint.transform.rotation);
+            }
+            else
+            {
+                Debug.LogError("No Checkpoint Set");
+            }
         }
 
         protected IEnumerator RespawnRoutine()
         {
             yield return null;
+
         }
 
     }
