@@ -23,7 +23,7 @@ public class MonsterSoundDetector : MonoBehaviour
     }
 
     public void CheckSoundPriority(string tag, Vector3 soundPosition){
-        Debug.Log(tag + " " + soundPosition);
+        //Debug.Log(tag + " " + soundPosition);
         int newTagIndex = 5;
         int oldTagIndex = 5;
         for(int i = 0; i < 3; i++){

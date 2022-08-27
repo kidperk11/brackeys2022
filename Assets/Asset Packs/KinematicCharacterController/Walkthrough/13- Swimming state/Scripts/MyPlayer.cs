@@ -78,19 +78,19 @@ namespace KinematicCharacterController
                 lookInputVector = Vector3.zero;
             }
 
-           // Input for zooming the camera (disabled in WebGL because it can cause problems)
-           float scrollInput = -Input.GetAxis(MouseScrollInput);
-            #if UNITY_WEBGL
-                scrollInput = 0f;
-            #endif
+            // Input for zooming the camera (disabled in WebGL because it can cause problems)
+            float scrollInput = -Input.GetAxis(MouseScrollInput);
+#if UNITY_WEBGL
+        scrollInput = 0f;
+#endif
 
-            //Apply inputs to the camera
+            // Apply inputs to the camera
             OrbitCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
 
             // Handle toggling zoom level
             if (Input.GetMouseButtonDown(1))
             {
-               OrbitCamera.TargetDistance = (OrbitCamera.TargetDistance == 0f) ? OrbitCamera.DefaultDistance : 0f;
+                OrbitCamera.TargetDistance = (OrbitCamera.TargetDistance == 0f) ? OrbitCamera.DefaultDistance : 0f;
             }
         }
 

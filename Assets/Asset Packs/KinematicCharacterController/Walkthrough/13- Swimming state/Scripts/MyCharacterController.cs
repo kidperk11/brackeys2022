@@ -68,8 +68,15 @@ namespace KinematicCharacterController
         public Transform MeshRoot;
 
         public CharacterState CurrentCharacterState { get; private set; }
+        public Vector3 PlayerVelocity {  get { return m_PlayerVelocity; } }
+        public bool IsWalking { get { return m_isWalking; } }
+        public bool IsRunning { get { return m_isRunning; } }
+        public float MoveAxisRight { get { return m_MoveAxisRight; } }
+        public float MoveAxisForward { get { return m_MoveAxisForward; } }
 
-
+        private float m_MoveAxisRight;
+        private float m_MoveAxisForward;
+        private Vector3 m_PlayerVelocity;
         private float _moveSpeedHolder;
         private Collider[] _probedColliders = new Collider[8];
         private Vector3 _moveInputVector;
@@ -77,7 +84,7 @@ namespace KinematicCharacterController
         private bool _jumpInputIsHeld = false;
         private bool _crouchInputIsHeld = false;
         private bool _jumpRequested = false;
-        private bool _jumpConsumed = false;
+        public bool _jumpConsumed = false;
         private bool _doubleJumpConsumed = false;
         private bool _jumpedThisFrame = false;
         private bool _canWallJump = false;
@@ -88,6 +95,11 @@ namespace KinematicCharacterController
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
         private Collider _waterZone;
+        private bool m_isWalking;
+        private bool m_isRunning;
+
+        protected Checkpoint m_CurrentCheckpoint;
+
 
         private void Start()
         {
@@ -155,6 +167,9 @@ namespace KinematicCharacterController
 
             // Clamp input
             Vector3 moveInputVector = Vector3.ClampMagnitude(new Vector3(inputs.MoveAxisRight, 0f, inputs.MoveAxisForward), 1f);
+            m_MoveAxisForward = inputs.MoveAxisForward;
+            m_MoveAxisRight = inputs.MoveAxisRight;
+
 
             // Calculate camera direction and rotation on the character plane
             Vector3 cameraPlanarDirection = Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.forward, Motor.CharacterUp).normalized;
@@ -178,8 +193,6 @@ namespace KinematicCharacterController
                             _timeSinceJumpRequested = 0f;
                             _jumpRequested = true;
                         }
-
-
 
                         // Crouching input
                         if (inputs.CrouchDown)
@@ -313,6 +326,13 @@ namespace KinematicCharacterController
 
                             // Smooth movement Velocity
                             currentVelocity = Vector3.Lerp(currentVelocity, targetMovementVelocity, 1 - Mathf.Exp(-StableMovementSharpness * deltaTime));
+
+                            if (currentVelocity.sqrMagnitude > 0)
+                                m_isWalking = true;
+                            else
+                                m_isWalking = false;
+
+                            m_PlayerVelocity = currentVelocity;
                         }
                         else
                         {
@@ -332,6 +352,7 @@ namespace KinematicCharacterController
                                 currentVelocity += velocityDiff * AirAccelerationSpeed * deltaTime;
                             }
 
+                            m_isWalking = false;
                             // Gravity
                             currentVelocity += Gravity * deltaTime;
 
@@ -549,5 +570,24 @@ namespace KinematicCharacterController
         public void OnDiscreteCollisionDetected(Collider hitCollider)
         {
         }
+
+        public void SetCheckpoint(Checkpoint checkpoint)
+        {
+            if(checkpoint != null)
+            {
+                m_CurrentCheckpoint = checkpoint;
+            }
+        }
+
+        public void Respawn()
+        {
+            StartCoroutine(RespawnRoutine());
+        }
+
+        protected IEnumerator RespawnRoutine()
+        {
+            yield return null;
+        }
+
     }
 }
