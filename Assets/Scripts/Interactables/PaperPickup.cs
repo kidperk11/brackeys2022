@@ -17,6 +17,7 @@ public class PaperPickup : Pickup
     public GameObject clueArea;
     public GameObject clueAreaExit;
     public Transform monsterSpawn;
+    public GameObject[] triggers;
 
     private bool m_pickupItem;
     private bool flipped = false;
@@ -54,8 +55,13 @@ public class PaperPickup : Pickup
             rb = temp;
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             if(encounterManager.monster == null){
-                encounterManager.ActivateEncounter(clueArea, monsterSpawn);
                 clueAreaExit.SetActive(true);
+                foreach(GameObject child in triggers){
+                    child.SetActive(true);
+                }
+                encounterManager.ActivateEncounter(clueArea, monsterSpawn);
+                
+
             }
         }
 

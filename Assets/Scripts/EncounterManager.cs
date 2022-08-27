@@ -26,14 +26,19 @@ public class EncounterManager : MonoBehaviour
     public void DeactivateEncounter(GameObject clueArea, PaperPickup paperPickup){
         Throwable[] throwables = clueArea.GetComponentsInChildren<Throwable>();
         foreach(Throwable child in throwables){
-            child.enabled = true;
+            child.enabled = false;
         }
         ReactiveLightFlicker[] reactiveLights = clueArea.GetComponentsInChildren<ReactiveLightFlicker>();
         foreach(ReactiveLightFlicker child in reactiveLights){
-            child.enabled = true;
+            child.enabled = false;
         }
+        // MonsterTeleportTrigger[] teleportTriggers = clueArea.GetComponentsInChildren<MonsterTeleportTrigger>();
+        // foreach(MonsterTeleportTrigger child in teleportTriggers){
+        //     child.gameObject.SetActive(false);
+
+        // }
         Destroy(monster);
-        paperPickup.enabled = false;
+        Destroy(paperPickup.gameObject);
         ambientNoise.enabled = false;
     }
 }

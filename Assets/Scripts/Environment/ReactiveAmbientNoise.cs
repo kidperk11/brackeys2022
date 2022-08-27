@@ -27,6 +27,8 @@ public class ReactiveAmbientNoise : MonoBehaviour
     private void OnDisable() {
         alertSound.volume = 0;
         alertSound.Stop();
+        ambientSound.Play();
+        
         monster = null;
     }
 
@@ -40,7 +42,7 @@ public class ReactiveAmbientNoise : MonoBehaviour
             volumeRatio = (Vector3.Distance(monster.transform.position, character.transform.position) - 8) / (desiredDistance - 8);
             if(volumeRatio >= 0){
                 alertSound.volume = 0;
-                Debug.Log(volumeRatio);
+                //Debug.Log(volumeRatio);
                 ambientSound.volume = volumeRatio;
             }else{
                 ambientSound.volume = 0;

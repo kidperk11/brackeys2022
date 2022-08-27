@@ -7,6 +7,7 @@ public class ClueAreaExit : MonoBehaviour
     public GameObject clueArea;
     public EncounterManager encounterManager;
     public PaperPickup paperPickup;
+    public GameObject nextPaper;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class ClueAreaExit : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Player")){
             encounterManager.DeactivateEncounter(clueArea, paperPickup);
+            nextPaper.SetActive(true);           
         }
     }
 }
