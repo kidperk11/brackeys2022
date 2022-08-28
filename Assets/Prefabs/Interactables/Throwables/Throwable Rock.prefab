@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 254222053005665529}
   - component: {fileID: 3179745259741263112}
   - component: {fileID: 4741477021134202390}
-  - component: {fileID: 1919476873785346085}
   - component: {fileID: 2992757137360759539}
   - component: {fileID: 7399948889000741863}
+  - component: {fileID: 6938040277594913924}
   m_Layer: 0
   m_Name: Throwable Rock
   m_TagString: Rock
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7831614846481934873}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -420286529649928667, guid: 8680c8b581b15e74c9117f65c4e62f27, type: 3}
 --- !u!23 &4741477021134202390
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1919476873785346085
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7831614846481934873}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2992757137360759539
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2992757137360759539}
-  coll: {fileID: 1919476873785346085}
+  coll: {fileID: 6938040277594913924}
   equipped: 0
   player: {fileID: 0}
   pickupPoint: {fileID: 0}
@@ -142,3 +129,17 @@ MonoBehaviour:
   throwForwardForce: 12
   throwUpwardForce: 1
   monsterSoundDetector: {fileID: 0}
+--- !u!64 &6938040277594913924
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831614846481934873}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -420286529649928667, guid: 8680c8b581b15e74c9117f65c4e62f27, type: 3}
