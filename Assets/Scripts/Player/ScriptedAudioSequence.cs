@@ -10,13 +10,15 @@ public class ScriptedAudioSequence : MonoBehaviour
     private int index;
     public GameObject player;
     private bool soundPlaying;
+    public GameObject walkie;
 
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
         player.GetComponentInChildren<MyPlayer>().EnablePlayer = false;
-        anim.SetTrigger("startWalkieTalkie");
+        //anim.SetTrigger("startWalkieTalkie");
+        walkie.SetActive(true);
         soundClips[index].Play();
         soundPlaying = true;
     }
@@ -28,10 +30,11 @@ public class ScriptedAudioSequence : MonoBehaviour
             index++;
             if(index == soundClips.Length){
             Debug.Log("End of Audio Sequence");
-            anim.SetTrigger("endWalkieTalkie");
+            //anim.SetTrigger("endWalkieTalkie");
             player.GetComponentInChildren<MyPlayer>().EnablePlayer = true;
-            //this.gameObject.SetActive(false);
-            Destroy(transform.parent);
+            walkie.SetActive(false);
+            this.gameObject.SetActive(false);
+            
             }else{
                 soundClips[index].Play();
                 soundPlaying = true;
