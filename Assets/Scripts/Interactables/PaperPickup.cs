@@ -49,7 +49,7 @@ public class PaperPickup : Pickup
         {
             Drop("Inspect");
             player.GetComponentInChildren<MyPlayer>().EnablePlayer = true;
-            player.GetComponentInChildren<MyCharacterController>().SetCheckpoint(player.transform);
+            //player.GetComponentInChildren<MyCharacterController>().SetCheckpoint(player.transform);
             interactWithObjectGUI.text = "Press 'E' to Pickup";
             coll.enabled = true;
             meshColl.enabled = true;

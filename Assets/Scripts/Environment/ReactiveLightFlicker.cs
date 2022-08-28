@@ -36,7 +36,6 @@ public class ReactiveLightFlicker : MonoBehaviour
         blinkTimer-=Time.deltaTime;
         if(blinkTimer <= 0 && blinkRatio != 0){
             if(lighting.activeInHierarchy){
-                Debug.Log("Lighting Disabled");
                 lighting.SetActive(false);
                 soundEffect.Stop();
             }else{

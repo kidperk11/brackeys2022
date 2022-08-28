@@ -158,6 +158,8 @@ namespace KinematicCharacterController
             }
         }
 
+
+
         /// <summary>
         /// This is called every frame by MyPlayer in order to tell the character what its inputs are
         /// </summary>
@@ -572,21 +574,25 @@ namespace KinematicCharacterController
         {
         }
 
-        public void SetCheckpoint(Transform checkpoint)
+        public void SetCheckpoint(Checkpoint checkpoint)
         {
             if (checkpoint != null)
             {
-                m_CurrentCheckpoint = checkpoint;
+                m_CurrentCheckpoint = checkpoint.transform;
             }
         }
 
         public void Respawn()
         {
-            StartCoroutine(RespawnRoutine());
+
+            //StartCoroutine(RespawnRoutine());
+
             if (m_CurrentCheckpoint != null)
             {
+                print("Test 3");
                 Debug.Log(m_CurrentCheckpoint.position);
-                Motor.SetPositionAndRotation(m_CurrentCheckpoint.position, m_CurrentCheckpoint.rotation);
+                Motor.SetPositionAndRotation(m_CurrentCheckpoint.transform.position, m_CurrentCheckpoint.transform.rotation);
+                //Motor.SetPositionAndRotation(new Vector3(0,0,0), new Quaternion(0,0,0,0));
                 encounterManager.ResetEncounter();
             }
             else
