@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableMonster: 1
+  m_EnablePlayer: 0
   OrbitCamera: {fileID: 860134289440186574}
   CameraFollowPoint: {fileID: 4482447109022137295}
   Character: {fileID: 4482447109508062284}
@@ -569,6 +570,7 @@ GameObject:
   - component: {fileID: 4482447109508062286}
   - component: {fileID: 4482447109508062280}
   - component: {fileID: 4482447109508062284}
+  - component: {fileID: 5044178244548677629}
   m_Layer: 3
   m_Name: Character
   m_TagString: Player
@@ -670,6 +672,8 @@ MonoBehaviour:
   OrientationSharpness: 10
   MaxStableDistanceFromLedge: 5
   MaxStableDenivelationAngle: 180
+  crouchSpeedModifier: 0
+  sprintSpeedModifier: 0
   MaxAirMoveSpeed: 10
   AirAccelerationSpeed: 5
   Drag: 0.1
@@ -690,6 +694,27 @@ MonoBehaviour:
   OrientTowardsGravity: 0
   Gravity: {x: 0, y: -30, z: 0}
   MeshRoot: {fileID: 4482447111006172730}
+  _jumpConsumed: 0
+--- !u!95 &5044178244548677629
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482447109508062281}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97bee35f51dcace429a8c3d70ddd8062, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4482447110413098556
 GameObject:
   m_ObjectHideFlags: 0
