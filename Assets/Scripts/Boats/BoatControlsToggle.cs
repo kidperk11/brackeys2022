@@ -101,7 +101,7 @@ namespace BoatControls
                     interactWithBoatText.text = "Press 'O' to Enter Boat";
                     EnablePlayer();
                     player.transform.SetParent(playerComponent.transform);
-                    player.GetComponent<KinematicCharacterMotor>().SetPositionAndRotation(playerRideTransform.transform.position, playerRideTransform.transform.rotation);
+                    player.GetComponent<KinematicCharacterMotor>().SetPositionAndRotation(playerRideTransform.transform.position, new Quaternion(0, 0, 0, 0));
                     DisableBoat();
 
                     
