@@ -18,6 +18,7 @@ public class PaperPickup : Pickup
     public GameObject clueAreaExit;
     public Transform monsterSpawn;
     public GameObject[] triggers;
+    public Transform playerCheckpoint;
 
     private bool m_pickupItem;
     private bool flipped = false;
@@ -48,6 +49,7 @@ public class PaperPickup : Pickup
         {
             Drop("Inspect");
             player.GetComponentInChildren<MyPlayer>().EnablePlayer = true;
+            player.GetComponentInChildren<MyCharacterController>().SetCheckpoint(player.transform);
             interactWithObjectGUI.text = "Press 'E' to Pickup";
             coll.enabled = true;
             meshColl.enabled = true;
@@ -59,7 +61,7 @@ public class PaperPickup : Pickup
                 foreach(GameObject child in triggers){
                     child.SetActive(true);
                 }
-                encounterManager.ActivateEncounter(clueArea, monsterSpawn);
+                encounterManager.ActivateEncounter(clueArea, monsterSpawn, this);
                 
 
             }

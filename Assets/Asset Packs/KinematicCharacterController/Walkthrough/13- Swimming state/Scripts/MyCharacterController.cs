@@ -29,6 +29,7 @@ namespace KinematicCharacterController
 
     public class MyCharacterController : MonoBehaviour, ICharacterController
     {
+        public EncounterManager encounterManager;
         public KinematicCharacterMotor Motor;
 
         [Header("Stable Movement")]
@@ -98,7 +99,7 @@ namespace KinematicCharacterController
         private bool m_isWalking;
         private bool m_isRunning;
 
-        protected Checkpoint m_CurrentCheckpoint;
+        public Transform m_CurrentCheckpoint;
 
 
         private void Start()
@@ -571,7 +572,7 @@ namespace KinematicCharacterController
         {
         }
 
-        public void SetCheckpoint(Checkpoint checkpoint)
+        public void SetCheckpoint(Transform checkpoint)
         {
             if (checkpoint != null)
             {
@@ -584,7 +585,9 @@ namespace KinematicCharacterController
             StartCoroutine(RespawnRoutine());
             if (m_CurrentCheckpoint != null)
             {
-                Motor.SetPositionAndRotation(m_CurrentCheckpoint.transform.position, m_CurrentCheckpoint.transform.rotation);
+                Debug.Log(m_CurrentCheckpoint.position);
+                Motor.SetPositionAndRotation(m_CurrentCheckpoint.position, m_CurrentCheckpoint.rotation);
+                encounterManager.ResetEncounter();
             }
             else
             {
