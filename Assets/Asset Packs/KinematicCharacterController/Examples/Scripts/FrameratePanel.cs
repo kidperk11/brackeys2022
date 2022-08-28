@@ -12,11 +12,8 @@ namespace KinematicCharacterController.Examples
     public class FrameratePanel : MonoBehaviour
     {
         public float PollingRate = 1f;
-        public Text PhysicsRate;
-        public Text PhysicsFPS;
+
         public Text AvgFPS;
-        public Text AvgFPSMin;
-        public Text AvgFPSMax;
 
         public Action<float> OnPhysicsFPSReady;
 
@@ -75,9 +72,6 @@ namespace KinematicCharacterController.Examples
                 float physicsFPS = 1f / (_physFramesDeltaSum / _physFramesCount);
 
                 AvgFPS.text = GetNumberString(Mathf.RoundToInt(1f / (_framesDeltaSum / _framesCount)));
-                AvgFPSMin.text = GetNumberString(Mathf.RoundToInt(1f / _maxDeltaTimeForAvg));
-                AvgFPSMax.text = GetNumberString(Mathf.RoundToInt(1f / _minDeltaTimeForAvg));
-                PhysicsFPS.text = GetNumberString(Mathf.RoundToInt(physicsFPS));
 
                 if(OnPhysicsFPSReady != null)
                 {
@@ -93,8 +87,6 @@ namespace KinematicCharacterController.Examples
 
                 _timeOfLastPoll = Time.unscaledTime;
             }
-
-            PhysicsRate.text = GetNumberString(Mathf.RoundToInt(1f / Time.fixedDeltaTime));
         }
 
         public string GetNumberString(int fps)
