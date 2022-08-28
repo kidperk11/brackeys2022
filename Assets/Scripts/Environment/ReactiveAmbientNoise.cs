@@ -18,9 +18,9 @@ public class ReactiveAmbientNoise : MonoBehaviour
        alertSound.volume = 0; 
     }
 
-    private void OnEnable() {
-        alertSound.volume = 0; 
+    private void OnEnable() { 
         alertSound.Play();
+        alertSound.volume = 0;
         monster = GameObject.Find("Monster(Clone)");
     }
 
@@ -28,7 +28,7 @@ public class ReactiveAmbientNoise : MonoBehaviour
         alertSound.volume = 0;
         alertSound.Stop();
         ambientSound.Play();
-        
+
         monster = null;
     }
 

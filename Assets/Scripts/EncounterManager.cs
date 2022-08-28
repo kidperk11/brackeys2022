@@ -26,7 +26,9 @@ public class EncounterManager : MonoBehaviour
             child.enabled = true;
         }
         ambientNoise.enabled = true;
-        monster = Instantiate(monsterPrefab, monsterSpawn.position, monsterSpawn.rotation);   
+        Debug.Log("Instatiating Monster");
+        monster = Instantiate(monsterPrefab, monsterSpawn.position, monsterSpawn.rotation);
+        Debug.Log(monster.transform.position);
     }
 
     public void DeactivateEncounter(GameObject clueArea, PaperPickup paperPickup){
