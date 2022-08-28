@@ -7,10 +7,16 @@ public class EncounterManager : MonoBehaviour
     public GameObject monster;
     public GameObject monsterPrefab;
     public ReactiveAmbientNoise ambientNoise;
+    public GameObject currentClueArea;
+    public PaperPickup currentPaperPickup;
+    public Transform currentMonsterSpawn;
     // public List<Throwable> throwables = new List<Throwable>();
     // public List<ReactiveLightFlicker> reactiveLights = new List<ReactiveLightFlicker>();
     
-    public void ActivateEncounter(GameObject clueArea, Transform monsterSpawn){
+    public void ActivateEncounter(GameObject clueArea, Transform monsterSpawn, PaperPickup paperPickup){
+        currentClueArea = clueArea;
+        currentPaperPickup = paperPickup;
+        currentMonsterSpawn = monsterSpawn;
         Throwable[] throwables = clueArea.GetComponentsInChildren<Throwable>();
         foreach(Throwable child in throwables){
             child.enabled = true;
@@ -40,5 +46,15 @@ public class EncounterManager : MonoBehaviour
         Destroy(monster);
         Destroy(paperPickup.gameObject);
         ambientNoise.enabled = false;
+    }
+    public void ResetEncounter(){
+        
+        // MonsterTeleportTrigger[] teleportTriggers = clueArea.GetComponentsInChildren<MonsterTeleportTrigger>();
+        // foreach(MonsterTeleportTrigger child in teleportTriggers){
+        //     child.gameObject.SetActive(false);
+
+        // }
+        monster.transform.position = currentMonsterSpawn.position;
+        monster.GetComponentInChildren<MonsterSoundDetector>().CheckSoundPriority("Player", currentMonsterSpawn.position);
     }
 }
