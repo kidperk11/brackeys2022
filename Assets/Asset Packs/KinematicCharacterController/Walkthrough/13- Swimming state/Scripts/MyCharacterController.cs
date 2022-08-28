@@ -586,7 +586,8 @@ namespace KinematicCharacterController
             if (m_CurrentCheckpoint != null)
             {
                 Debug.Log(m_CurrentCheckpoint.position);
-                Motor.SetPositionAndRotation(m_CurrentCheckpoint.position, m_CurrentCheckpoint.rotation);
+                Motor.SetPositionAndRotation(new Vector3(m_CurrentCheckpoint.position.x, m_CurrentCheckpoint.position.y,m_CurrentCheckpoint.position.z), new Quaternion(0,0,0,0));
+                Motor.SetPositionAndRotation(new Vector3(0, 0,0), new Quaternion(0,0,0,0));
                 encounterManager.ResetEncounter();
             }
             else
